@@ -1,0 +1,17 @@
+
+<div class="container">
+  <mat-form-field>
+    <mat-label>Choose card</mat-label>
+    <mat-select [(ngModel)]="selectedOption">
+      <mat-option *ngFor="let card of cards" [value]="card.cardHolder">
+        {{card.cardHolder}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="buttons-row">
+    <button mat-stroked-button color="primary" [routerLink]="['/add-card']" >Add Card</button>
+    <button mat-stroked-button [routerLink]="['/payment-summary']" >PAY</button>
+  </div>
+
+</div>

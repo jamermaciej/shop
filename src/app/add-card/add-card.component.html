@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="addCardForm" (ngSubmit)="onSubmit()">
+       {{ credCardName }}
+        <mat-form-field>
+          <input type="text" matInput placeholder="Card number" formControlName="cardNumber">
+          <mat-error *ngIf="addCardForm.get('cardNumber').invalid">The credit card number is not valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" matInput placeholder="CCV" formControlName="ccv">
+          <mat-error *ngIf="addCardForm.get('ccv').invalid">The CVV number is not valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Card holder" formControlName="cardHolder">
+            <mat-error *ngIf="addCardForm.get('ccv').invalid">The card holder is required</mat-error>
+        </mat-form-field>
+
+        <div class="field-row">
+              <mat-form-field>
+                <input matInput placeholder="MM" formControlName="expiredMonth">
+              </mat-form-field>
+              
+              <span>/</span>
+      
+              <mat-form-field>
+                <input matInput placeholder="RR" formControlName="expiredYear">
+              </mat-form-field>
+      
+              <mat-error *ngIf="addCardForm.get('expiredMonth').invalid && addCardForm.get('expiredMonth').dirty || addCardForm.get('expiredYear').invalid && addCardForm.get('expiredYear').dirty">The expired date is not valid</mat-error>      
+        </div>
+
+        <button mat-stroked-button>ADD CARD</button>
+  </form>
+</div>
+
+

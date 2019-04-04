@@ -1,3 +1,4 @@
+import { AppState } from './../app.state';
 import { CardsService } from './../services/cards.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -6,6 +7,8 @@ import { cardNumberValidator } from './../validators/cardValidator';
 import { Card } from './../model/card';
 import { cvvValidator } from '../validators/cvvValidator';
 import { expiredMonthValidator, expiredYearValidator } from '../validators/expiredValidator';
+import { Store } from '@ngrx/store';
+import * as CardActions from './../actions/card.actions';
 
 @Component({
   selector: 'app-add-card',
@@ -31,7 +34,10 @@ export class AddCardComponent implements OnInit {
     jcb: /^(?:2131|1800|35\d{3})\d{11}$/
   };
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private cardService: CardsService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private cardService: CardsService,
+              private store: Store<AppState>) { }
 
   ngOnInit() {
     this.addCardForm = this.formBuilder.group({
@@ -54,11 +60,16 @@ export class AddCardComponent implements OnInit {
     });
   }
 
+  addCard() {
+    this.store.dispatch(new CardActions.AddCard(this.addCardForm.value));
+  }
+
   onSubmit() {
     if (this.addCardForm.invalid ) {
       return;
     }
-    this.cardService.addCard(this.addCardForm.value);
+    // this.cardService.addCard(this.addCardForm.value);
+    this.addCard();
     this.router.navigate(['/payment']);
   }
 }

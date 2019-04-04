@@ -16,6 +16,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/card.reducer';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      card: reducer
+    })
   ],
   providers: [CardsService],
   bootstrap: [AppComponent]

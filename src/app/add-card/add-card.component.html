@@ -13,7 +13,7 @@
 
         <mat-form-field>
             <input matInput placeholder="Card holder" formControlName="cardHolder">
-            <mat-error *ngIf="addCardForm.get('ccv').invalid">The card holder is required</mat-error>
+            <mat-error *ngIf="addCardForm.get('cardHolder').invalid">The card holder is required</mat-error>
         </mat-form-field>
 
         <div class="field-row">

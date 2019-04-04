@@ -3,7 +3,7 @@
   <mat-form-field>
     <mat-label>Choose card</mat-label>
     <mat-select [(ngModel)]="selectedOption">
-      <mat-option *ngFor="let card of cards" [value]="card.cardHolder">
+      <mat-option *ngFor="let card of cards | async" [value]="card.cardHolder">
         {{card.cardHolder}}
       </mat-option>
     </mat-select>

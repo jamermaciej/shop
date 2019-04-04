@@ -1,5 +1,9 @@
 import { CardsService } from './../services/cards.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Card } from '../model/card';
+import { AppState } from '../app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-payment',
@@ -8,14 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  cards = [];
+  // cards = [];
   selectedOption;
 
-  constructor(private cardsService: CardsService) { }
+  cards: Observable<Card[]>;
+
+  constructor(private cardsService: CardsService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.cardsService.getCardsObs().subscribe( (card) => {
-      this.cards = card;
+      // this.cards = card;
+      this.cards = this.store.select('card');
       this.selectedOption = card[card.length - 1].cardHolder;
     });
   }

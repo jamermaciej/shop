@@ -1,6 +1,7 @@
 export interface Card {
   cardNumber: number;
-  ccv: string;
+  ccv: number;
   cardHolder: string;
-  expiredDate: Date;
+  expiredMonth: number;
+  expiredYear: number;
 }

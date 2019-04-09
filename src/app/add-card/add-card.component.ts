@@ -19,6 +19,7 @@ export class AddCardComponent implements OnInit {
 
   addCardForm: FormGroup;
   credCardName: String;
+  credCardImg: string;
 
   valid = {
     electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
@@ -33,6 +34,17 @@ export class AddCardComponent implements OnInit {
     discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
     jcb: /^(?:2131|1800|35\d{3})\d{11}$/
   };
+
+  cardImages = [
+    {
+      name: 'mastercard',
+      url: './../../assets/mastercard.svg'
+    },
+    {
+      name: 'visa',
+      url: './../../assets/visa.png'
+    }
+  ];
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -54,9 +66,17 @@ export class AddCardComponent implements OnInit {
       for (const key in this.valid) {
         if ( this.valid[key].test(value)) {
           this.credCardName = key;
+          // tslint:disable-next-line:no-shadowed-variable
+          this.cardImages.map( value => {
+            if (value.name === key) {
+              this.credCardImg = value.url;
+              return;
+            }
+          });
           return;
         }
         this.credCardName = '';
+        this.credCardImg = '';
       }
     });
   }

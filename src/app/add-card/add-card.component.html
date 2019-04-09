@@ -1,7 +1,9 @@
 <div class="container">
   <form [formGroup]="addCardForm" (ngSubmit)="onSubmit()">
-       {{ credCardName }}
         <mat-form-field>
+          <div class="card-logo" *ngIf="credCardImg">
+              <img [src]="credCardImg" [alt]="credCardName">
+          </div>
           <input type="number" matInput placeholder="Card number" formControlName="cardNumber">
           <mat-error *ngIf="addCardForm.get('cardNumber').invalid">The credit card number is not valid</mat-error>
         </mat-form-field>

@@ -45,7 +45,8 @@ export class AddCardComponent implements OnInit {
       ccv: ['', [Validators.required, cvvValidator]],
       cardHolder: ['', Validators.required],
       expiredMonth: ['', [Validators.required, expiredMonthValidator]],
-      expiredYear: ['', [Validators.required, expiredYearValidator]]
+      expiredYear: ['', [Validators.required, expiredYearValidator]],
+      active: true
     });
 
     this.addCardForm.controls.cardNumber.valueChanges.subscribe( value => {

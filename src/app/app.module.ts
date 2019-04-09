@@ -42,7 +42,7 @@ import { reducer } from './reducers/card.reducer';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
-      card: reducer
+      cards: reducer
     })
   ],
   providers: [CardsService],

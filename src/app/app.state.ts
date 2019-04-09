@@ -1,5 +1,8 @@
 import { Card } from './model/card';
 
 export interface AppState {
-    readonly card: Card[];
+    readonly allCards: Card[];
+    readonly selectedCard: string;
 }
+
+

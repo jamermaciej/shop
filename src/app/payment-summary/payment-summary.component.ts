@@ -1,4 +1,10 @@
+import { AppState } from './../app.state';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Card } from '../model/card';
+import { Observable, pipe } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import * as rd from './../reducers/card.reducer';
 
 @Component({
   selector: 'app-payment-summary',
@@ -7,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentSummaryComponent implements OnInit {
 
-  constructor() { }
+  card: Observable<Card>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-  }
+    this.card = this.store.select(rd.selectedCardFull);
 
+      // .pipe(
+      //   map(items => items.filter(item => item.active === false ))
+      // ).subscribe(val => {
+      //   this.card = val;
+      // });
+  }
 }

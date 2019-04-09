@@ -1,3 +1,10 @@
-<p>
-  Transaction Successful!
-</p>
+<!-- <p *ngFor="let c of (card | async).cardHolder">
+  {{ c?.cardHolder }}<br>
+  {{ c.cardNumber}}<br>
+  {{ c.ccv }}
+  {{ c.expiredMonth}}/{{ c.expiredYear }}
+</p> -->
+<pre>{{ card | async | json}}</pre>
+<!-- {{ (card | async).cardHolder }}
+{{ (card | async).cardNumber }}
+{{ (card | async).ccv }} -->

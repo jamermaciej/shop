@@ -2,9 +2,9 @@
 <div class="container">
   <mat-form-field>
     <mat-label>Choose card</mat-label>
-    <mat-select [(ngModel)]="selectedOption">
+    <mat-select [(ngModel)]="selectedOption" (selectionChange)="chooseCard($event)">
       <mat-option *ngFor="let card of cards | async" [value]="card.cardHolder">
-        {{card.cardHolder}}
+        {{ card.cardHolder }}
       </mat-option>
     </mat-select>
   </mat-form-field>

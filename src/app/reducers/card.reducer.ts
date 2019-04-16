@@ -1,5 +1,5 @@
 import { AppState } from './../app.state';
-import { Action } from '@ngrx/store';
+import { Action, ActionReducerMap } from '@ngrx/store';
 import { Card } from './../model/card';
 import * as CardActions from './../actions/card.actions';
 

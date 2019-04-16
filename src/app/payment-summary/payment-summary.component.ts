@@ -20,6 +20,9 @@ export class PaymentSummaryComponent implements OnInit {
   ngOnInit() {
     this.card = this.store.select(rd.selectedCardFull);
 
+    // this.card = this.store.select(state => state.cards.selectedCard);
+
+
       // .pipe(
       //   map(items => items.filter(item => item.active === false ))
       // ).subscribe(val => {

@@ -25,8 +25,12 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     // this.selectedCard = this.store.select('selectedCard');
-    this.cards = this.store.select(rd.selectFeatureCount);
-    this.store.select(rd.selectCurrentCard).subscribe(value => {
+    // this.cards = this.store.select(rd.selectFeatureCount);
+   this.cards = this.store.select(state => state.cards.allCards);
+    // this.store.select(rd.selectCurrentCard).subscribe(value => {
+    //   this.selectedOption = value;
+    // });
+    this.store.select(state => state.selectedCard).subscribe(value => {
       this.selectedOption = value;
     });
 
